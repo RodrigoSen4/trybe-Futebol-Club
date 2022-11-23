@@ -1,4 +1,4 @@
-import jwt = require('jsonwebtoken');
+import * as jwt from 'jsonwebtoken';
 
 require('dotenv/config');
 
@@ -14,8 +14,8 @@ const createToken = (data: string) => {
 };
 
 const validateToken = (token: string) => {
-  const validToken = jwt.verify(token, secret);
-  return validToken;
+  const decoded = jwt.decode(token);
+  return decoded as jwt.JwtPayload;
 };
 
 export = {

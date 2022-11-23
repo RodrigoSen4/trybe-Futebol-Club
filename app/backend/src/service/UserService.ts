@@ -3,7 +3,7 @@ import jwt = require('../utils/jwt.util');
 import UserModel from '../database/models/UserModel';
 import ErrorMap from '../utils/errorMap';
 import IServiceUser from '../interface/IServiceUser';
-/* import IUser from '../interface/IUser'; */
+import IUser from '../interface/IUser';
 
 export default class UserService {
   static async login(email: string, password: string): Promise<IServiceUser> {
@@ -26,9 +26,11 @@ export default class UserService {
     return { type: null, message: token };
   }
 
-/*   static async validate(token: string): Promise<object> {
-    const validToken = jwt.validateToken(token);
-    const { role } = await UserModel.findOne({ where: { validToken } }) as unknown as IUser;
-    return { role };
-  } */
+  static async userRole(token: string) {
+    const decoded = jwt.validateToken(token);
+    const { data } = decoded;
+    const email = data;
+    const { role } = await UserModel.findOne({ where: { email } }) as unknown as IUser;
+    return role;
+  }
 }

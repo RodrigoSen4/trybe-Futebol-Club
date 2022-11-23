@@ -14,14 +14,14 @@ export default class UserController {
     res.status(200).json({ token: message });
   }
 
-/*   static async validate(req: Request, res: Response) {
+  static async userRole(req: Request, res: Response) {
     const token = req.headers.authorization;
 
     if (!token) {
       return res.status(401).json({ message: 'token not provided' });
     }
 
-    const roleValid = await UserService.validate(token);
-    res.status(200).json({ role: roleValid });
-  } */
+    const userRole = await UserService.userRole(token);
+    return res.status(200).json({ role: userRole });
+  }
 }
