@@ -38,6 +38,7 @@ UserModel.init({
   sequelize: db,
   timestamps: false,
   modelName: 'UserModel',
+  tableName: 'users',
 });
 
 export default UserModel;
