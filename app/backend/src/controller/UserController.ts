@@ -14,7 +14,7 @@ export default class UserController {
     res.status(200).json({ token: message });
   }
 
-  static async userRole(req: Request, res: Response) {
+  static async validate(req: Request, res: Response) {
     const token = req.headers.authorization;
 
     if (!token) {

@@ -26,11 +26,11 @@ export default class UserService {
     return { type: null, message: token };
   }
 
-  static async userRole(token: string) {
+  static async userRole(token: string): Promise<string> {
     const decoded = jwt.validateToken(token);
     const { data } = decoded;
     const email = data;
-    const { role } = await UserModel.findOne({ where: { email } }) as unknown as IUser;
+    const { role } = await UserModel.findOne({ where: { email } }) as IUser;
     return role;
   }
 }
