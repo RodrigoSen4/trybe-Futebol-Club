@@ -27,7 +27,7 @@ describe('Testes da rota de login', () => {
     (UserModel.findOne as sinon.SinonStub).restore();
   })
 
-  it('deve ser retornado um status 200 e um token caso o login seja válido', async () => {
+  it('Deve retornar um status 200 e um token se o login for feito corretamente', async () => {
     const validUser = {
       email: "mock user",
       password: "secret_admin"
@@ -42,9 +42,9 @@ describe('Testes da rota de login', () => {
     expect(chaiHttpResponse.body).to.haveOwnProperty('token');
   });
 
-  it('deve ser retornado um status de 400 caso nenhum email seja fornecido', async () => {
+  it('Deve retornar um status 400 se nenum email for passado', async () => {
     const invalidUser = {
-      password: "any password"
+      password: "12345"
     };
 
     chaiHttpResponse = await chai
