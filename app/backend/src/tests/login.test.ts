@@ -42,7 +42,7 @@ describe('Testes da rota de login', () => {
     expect(chaiHttpResponse.body).to.haveOwnProperty('token');
   });
 
-  it('Deve retornar um status 400 se nenum email for passado', async () => {
+  it('Deve retornar um status 400 se nenhum email for passado', async () => {
     const invalidUser = {
       password: "12345"
     };
@@ -55,6 +55,37 @@ describe('Testes da rota de login', () => {
     expect(chaiHttpResponse).to.have.status(400);
     expect(chaiHttpResponse.body).to.haveOwnProperty('message');
     expect(chaiHttpResponse.body.message).to.be.eq('All fields must be filled');
+  });
+
+  it('Deve retornar um status 401 caso nenhum usuario seja encontrado no banco de dados', async () => {
+    (UserModel.findOne as sinon.SinonStub).restore();
+    sinon
+      .stub(UserModel, "findOne")
+      .resolves(null);
+
+    const validUser = {
+      email: "useruser",
+      password: "12345"
+    };
+
+    chaiHttpResponse = await chai
+      .request(app)
+      .post('/login')
+      .send({ ...validUser })
+
+    expect(chaiHttpResponse).to.have.status(401);
+    expect(chaiHttpResponse.body).to.haveOwnProperty('message');
+    expect(chaiHttpResponse.body.message).to.be.eq('Incorrect email or password');
+  });
+
+  it('Deve retornar um status 401 caso um token não enviado', async () => {
+    chaiHttpResponse = await chai
+    .request(app)
+    .get('/login/validate')
+
+    expect(chaiHttpResponse).to.have.status(401);
+    expect(chaiHttpResponse.body).to.haveOwnProperty('message');
+    expect(chaiHttpResponse.body.message).to.be.eq('token not provided');
   });
 
 });

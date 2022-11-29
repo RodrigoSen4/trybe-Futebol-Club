@@ -57,4 +57,11 @@ export default class MatchesService {
 
     return { type: null, message: 'Finished' };
   }
+
+  static async updateMatch(id: number, body: ICreateMatch): Promise <ICreateMatch> {
+    const { homeTeamGoals, awayTeamGoals } = body;
+    await MatchesModel.update({ homeTeamGoals, awayTeamGoals }, { where: { id } });
+
+    return { type: null, message: 'Success' };
+  }
 }

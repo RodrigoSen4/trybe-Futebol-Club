@@ -14,7 +14,7 @@ const { app } = new App();
 
 const { expect } = chai;
 
-describe('Testes da rota de login', () => {
+describe('Testes da rota de teams', () => {
   let chaiHttpResponse: Response;
 
   it('Deve retornar um status 200 e todos os teams', async () => {
@@ -28,7 +28,6 @@ describe('Testes da rota de login', () => {
 
     expect(chaiHttpResponse).to.have.status(200);
     expect(chaiHttpResponse.body).to.be.deep.equal(teamsMock.teams);
-    (TeamsModel.findAll as sinon.SinonStub).restore();
 
   });
 
@@ -46,7 +45,6 @@ describe('Testes da rota de login', () => {
     expect(chaiHttpResponse).to.have.status(200);
     expect(chaiHttpResponse.body).to.be.deep.equal(teamsMock.idteam);
 
-    (TeamsModel.findAll as sinon.SinonStub).restore();
   });
 
 });
