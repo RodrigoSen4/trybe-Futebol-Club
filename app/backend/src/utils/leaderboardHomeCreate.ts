@@ -30,8 +30,7 @@ const goalsOwn = (team: IMatch[]) => team.reduce((acc, curr) => acc + curr.awayT
 const efficiency = (totalPoints: number, totalGames:number) => ((totalPoints
 / (totalGames * 3)) * 100).toFixed(2);
 
-const leaderboardCreate = ({ teamName, teamHome }: any) => {
-  console.log(teamHome);
+const leaderboardHomeCreate = ({ teamName, teamHome }: any) => {
   const leaderboards = {
     name: teamName,
     totalPoints: calculte(teamHome).points,
@@ -48,4 +47,4 @@ const leaderboardCreate = ({ teamName, teamHome }: any) => {
   return leaderboards;
 };
 
-export default leaderboardCreate;
+export default leaderboardHomeCreate;

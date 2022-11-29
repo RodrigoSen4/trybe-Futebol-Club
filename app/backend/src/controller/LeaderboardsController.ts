@@ -7,4 +7,10 @@ export default class LeaderboardsController {
 
     return res.status(200).json(leaderboardsHome);
   }
+
+  static async getLeaderboardAway(req: Request, res: Response) {
+    const leaderboardsAway = await LeaderboardsService.getLeaderboardAway();
+
+    return res.status(200).json(leaderboardsAway);
+  }
 }
