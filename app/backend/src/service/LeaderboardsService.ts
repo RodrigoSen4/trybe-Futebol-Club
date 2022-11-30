@@ -1,9 +1,9 @@
-import joiningArrays from '../utils/leaderboard';
 import ILeaderboard from '../interface/ILeaderboard';
 import TeamsModel from '../database/models/TeamsModel';
 import MatchesModels from '../database/models/MatchesModel';
 import leaderboardAwayCreate from '../utils/leaderboardAwayCreate';
 import leaderboardHomeCreate from '../utils/leaderboardHomeCreate';
+import joiningArrays from '../utils/leaderboard';
 
 export default class LeaderboardsService {
   static leaderboardOrder(leaderboard: ILeaderboard[]): ILeaderboard[] {
@@ -16,7 +16,7 @@ export default class LeaderboardsService {
     ));
   }
 
-  static async getLeaderboardHomeOrAway(team: string): Promise <ILeaderboard[]> {
+  static async getLeaderboardHomeOrAway(team: string) {
     const data = await TeamsModel.findAll({
       include: [{
         model: MatchesModels,
