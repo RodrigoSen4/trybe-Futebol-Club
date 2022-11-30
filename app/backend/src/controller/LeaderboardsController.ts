@@ -3,19 +3,19 @@ import LeaderboardsService from '../service/LeaderboardsService';
 
 export default class LeaderboardsController {
   static async getLeaderboardHome(req: Request, res: Response) {
-    const leaderboardsHome = await LeaderboardsService.getLeaderboardHome();
+    const leaderboardsHome = await LeaderboardsService.getLeaderboardHome('teamHome');
 
     return res.status(200).json(leaderboardsHome);
   }
 
   static async getLeaderboardAway(req: Request, res: Response) {
-    const leaderboardsAway = await LeaderboardsService.getLeaderboardAway();
+    const leaderboardsAway = await LeaderboardsService.getLeaderboardHome('teamAway');
 
     return res.status(200).json(leaderboardsAway);
   }
 
   static async getLeaderboard(req: Request, res: Response) {
-    const leaderboard = await LeaderboardsService.getLeaderboard();
+    const leaderboard = await LeaderboardsService.getLeaderboardAll();
 
     return res.status(200).json(leaderboard);
   }

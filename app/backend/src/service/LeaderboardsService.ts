@@ -16,29 +16,21 @@ export default class LeaderboardsService {
     ));
   }
 
-  static async getLeaderboardHome(): Promise <ILeaderboard[]> {
+  static async getLeaderboardHomeOrAway(team: string): Promise <ILeaderboard[]> {
     const data = await TeamsModel.findAll({
       include: [{
         model: MatchesModels,
-        as: 'teamHome',
+        as: team,
         where: { inProgress: false },
       }],
     });
 
-    const leaderboard = data.map((element) => leaderboardHomeCreate(element));
-    const leaderboardOredened = this.leaderboardOrder(leaderboard);
+    if (team === 'teamHome') {
+      const leaderboard = data.map((element) => leaderboardHomeCreate(element));
+      const leaderboardOredened = this.leaderboardOrder(leaderboard);
 
-    return leaderboardOredened;
-  }
-
-  static async getLeaderboardAway(): Promise <ILeaderboard[]> {
-    const data = await TeamsModel.findAll({
-      include: [{
-        model: MatchesModels,
-        as: 'teamAway',
-        where: { inProgress: false },
-      }],
-    });
+      return leaderboardOredened;
+    }
 
     const leaderboard = data.map((element) => leaderboardAwayCreate(element));
     const leaderboardOredened = this.leaderboardOrder(leaderboard);
@@ -46,9 +38,9 @@ export default class LeaderboardsService {
     return leaderboardOredened;
   }
 
-  static async getLeaderboard(): Promise <ILeaderboard[]> {
-    const home = await this.getLeaderboardHome();
-    const away = await this.getLeaderboardAway();
+  static async getLeaderboardAll(): Promise <ILeaderboard[]> {
+    const home = await this.getLeaderboardHomeOrAway('teamHome');
+    const away = await this.getLeaderboardHomeOrAway('teamAway');
 
     const leaderboard = joiningArrays(home, away);
 
