@@ -1,3 +1,4 @@
+import joiningArrays from '../utils/leaderboard';
 import ILeaderboard from '../interface/ILeaderboard';
 import TeamsModel from '../database/models/TeamsModel';
 import MatchesModels from '../database/models/MatchesModel';
@@ -15,7 +16,7 @@ export default class LeaderboardsService {
     ));
   }
 
-  static async getLeaderboardHome() {
+  static async getLeaderboardHome(): Promise <ILeaderboard[]> {
     const data = await TeamsModel.findAll({
       include: [{
         model: MatchesModels,
@@ -30,7 +31,7 @@ export default class LeaderboardsService {
     return leaderboardOredened;
   }
 
-  static async getLeaderboardAway() {
+  static async getLeaderboardAway(): Promise <ILeaderboard[]> {
     const data = await TeamsModel.findAll({
       include: [{
         model: MatchesModels,
@@ -43,5 +44,16 @@ export default class LeaderboardsService {
     const leaderboardOredened = this.leaderboardOrder(leaderboard);
 
     return leaderboardOredened;
+  }
+
+  static async getLeaderboard(): Promise <ILeaderboard[]> {
+    const home = await this.getLeaderboardHome();
+    const away = await this.getLeaderboardAway();
+
+    const leaderboard = joiningArrays(home, away);
+
+    const leaderboardOrder = this.leaderboardOrder(leaderboard);
+
+    return leaderboardOrder;
   }
 }
