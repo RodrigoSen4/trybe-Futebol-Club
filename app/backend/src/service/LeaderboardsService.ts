@@ -3,7 +3,7 @@ import TeamsModel from '../database/models/TeamsModel';
 import MatchesModels from '../database/models/MatchesModel';
 import leaderboardAwayCreate from '../utils/leaderboardAwayCreate';
 import leaderboardHomeCreate from '../utils/leaderboardHomeCreate';
-import joiningArrays from '../utils/leaderboard';
+import joiningArray from '../utils/leaderboard';
 
 export default class LeaderboardsService {
   static leaderboardOrder(leaderboard: ILeaderboard[]): ILeaderboard[] {
@@ -42,7 +42,7 @@ export default class LeaderboardsService {
     const home = await this.getLeaderboardHomeOrAway('teamHome');
     const away = await this.getLeaderboardHomeOrAway('teamAway');
 
-    const leaderboard = joiningArrays(home, away);
+    const leaderboard = joiningArray(home, away);
 
     const leaderboardOrder = this.leaderboardOrder(leaderboard);
 

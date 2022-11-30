@@ -4,7 +4,7 @@ const efficiency = (home: any, away: any) => (((home.efficiency * home.totalGame
 + (away.efficiency * away.totalGames))
     / (home.totalGames + away.totalGames)).toFixed(2);
 
-const joiningArrays = (home: ILeaderboard[], away: ILeaderboard[]): ILeaderboard[] => {
+const joiningArray = (home: ILeaderboard[], away: ILeaderboard[]): ILeaderboard[] => {
   const leaderboard = [] as ILeaderboard[];
   home.forEach((h) => {
     away.forEach((a) => {
@@ -25,4 +25,4 @@ const joiningArrays = (home: ILeaderboard[], away: ILeaderboard[]): ILeaderboard
   return leaderboard;
 };
 
-export default joiningArrays;
+export default joiningArray;
