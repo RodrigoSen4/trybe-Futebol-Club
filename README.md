@@ -21,7 +21,7 @@ Bem vindo ao repositório do projeto Trybe Futebol Club (TFC). Projeto que foi d
 - Orientação a objetos e padrão S.O.L.I.D;
 - Implementação de testes de Integração;
 
-### O que foi desenvolvido na API
+### O que foi desenvolvido na API:
 
 Todo o frontend foi desenvolvido pela Trybe e disponibilizado, a responsabilidade dos alunos ficou em desenvolver o backend, abaixo algumas dessas responsabilidades:
 
@@ -38,7 +38,7 @@ Todo o frontend foi desenvolvido pela Trybe e disponibilizado, a responsabilidad
 
 <summary><strong>Rodando o projeto com Docker ou localmente</strong></summary><br />
 
-### :whale: rodando em contêineres
+### Rodando em contêineres
 dentro da raiz da aplicação, rode: 
 ```shell
 npm run compose:up
@@ -48,7 +48,7 @@ ou
  npm run compose:up:dev
 ```
 para rodar em desenvolvimento
-### :computer: rodando localmente
+### Rodando localmente
 para iniciar o backend acesse `app/backend/`
 atualize o arquivo `.env.example` para `.env` e edite as variáveis de acordo com o acesso ao seu banco de dados local.
 Depois, rode:
