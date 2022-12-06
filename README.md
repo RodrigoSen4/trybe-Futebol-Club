@@ -74,7 +74,10 @@ npm run start
 
   Para fazer alterações é necessario fazer login com um usuario que tem permissões de administrador, para isso faça login com os respectivos login e senha:
 
-  Login: admin@admin.com
-  Senha: secret_admin
-
+  ```json
+  {
+    "Login": "admin@admin.com",
+    "Senha": "secret_admin"
+  }
+```
 </details>
