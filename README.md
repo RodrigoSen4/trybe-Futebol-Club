@@ -36,6 +36,8 @@ Todo o frontend foi desenvolvido pela Trybe e disponibilizado, a responsabilidad
 
 <details>
 
+<summary><strong>Rodando o projeto com Docker ou localmente</strong></summary><br />
+
 ### :whale: rodando em contêineres
 dentro da raiz da aplicação, rode: 
 ```shell
@@ -64,11 +66,11 @@ npm run start
 ```
 </details>
 
-  ## Editando partidas, adicionado e finalizando. 
+  ## Editando Partidas
   
-</details>
-
 <details>
+
+<summary><strong>Editando finalizando ou adicionando partidas</strong></summary><br />
 
   Para fazer alterações é necessario fazer login com um usuario que tem permissões de administrador, para isso faça login com os respectivos login e senha:
 
