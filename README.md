@@ -3,7 +3,7 @@
 Bem vindo ao repositório do projeto Trybe Futebol Club (TFC). Projeto que foi desenvolvido no modulo de backend na trybe, neste projeto foi desenvolvido uma tabela de classificação de times em relação a um campeonato, semelhante a tabela do brasileirão, sendo possivel editar resultado de partidas e finaliza-las. 
 
   <p align="center">
-    <img src="/frontend/src/images/printTela.png" alt="Imagem do site"  width="600"/>
+    <img src="/imgs/printTela.png" alt="Imagem do site"  width="600"/>
   </p>
 
 ## Ferramentas, linguagens e bibliotecas
